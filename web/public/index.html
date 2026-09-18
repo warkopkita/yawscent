@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>yawscent indonesia — Haute Parfumerie & Authentic Long-Lasting Fragrances</title>
+  <!-- SEO & Open Graph Meta Tags -->
+  <meta name="description" content="yawscent indonesia — Haute Parfumerie & Authentic Long-Lasting Fragrances. Konsentrasi Extrait De Parfum hingga 35% tahan 8-12 jam.">
+  <meta name="keywords" content="parfum pria tahan lama, parfum wanita elegan, extrait de parfum indonesia, yawscent, parfum lokal mewah">
+  <meta property="og:title" content="yawscent indonesia — Haute Parfumerie & Authentic Long-Lasting Fragrances">
+  <meta property="og:description" content="Kekayaan aroma Nusantara dipadu formulasi modern kelas dunia. Extrait De Parfum tahan hingga 12 jam.">
+  <meta property="og:image" content="/images/noir.jpg">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0B0C0E">
+  <!-- PWA Manifest & App Support -->
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/images/noir.jpg">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+      });
+    }
+  </script>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    <span>✨ <strong>YAWSCENT EXCLUSIVE:</strong> Dapatkan Free Discovery Sample + Cashback 10% untuk Member Baru dengan kode <code>YAWWELCOME</code></span>
+  </div>
+
+  <!-- Header & Navigation -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand-logo" onclick="app.showSection('home')">
+        <span class="logo-text">YAWSCENT</span>
+        <span class="logo-sub">INDONESIA</span>
+      </div>
+
+      <button class="hamburger-btn" id="hamburgerBtn" onclick="app.toggleMobileMenu()" aria-label="Menu navigasi">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#koleksi" onclick="app.showSection('home'); app.scrollTo('koleksi'); app.closeMobileMenu()">Katalog Aroma</a>
+        <a href="#scent-finder" onclick="app.openScentFinder(); app.closeMobileMenu()">Scent Finder Quiz</a>
+        <a href="#discovery" onclick="app.showSection('home'); app.scrollTo('discovery'); app.closeMobileMenu()">Discovery Set</a>
+        <a href="#testimoni" onclick="app.showSection('home'); app.scrollTo('testimoni'); app.closeMobileMenu()">Testimoni</a>
+        <a href="#loyalty" onclick="app.showSection('loyalty'); app.closeMobileMenu()">VIP Club & Poin</a>
+        <a href="#tentang" onclick="app.showSection('home'); app.scrollTo('tentang'); app.closeMobileMenu()">Filosofi</a>
+        <a href="/login" class="nav-classic-link">⚜️ Masuk Klasik</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- User Auth & Role Button (Opens Dedicated Classic Login Page) -->
+        <button class="btn-auth-user" onclick="window.location.href='/login'" id="btnAuthUser" title="Masuk / Kelola Akun">
+          <span class="auth-user-icon" id="authUserIcon">👤</span>
+          <span class="auth-user-name" id="authUserDisplay">Masuk / Akun</span>
+        </button>
+
+        <button class="btn-admin-switch" onclick="app.toggleAdminView()" id="btnAdminSwitch" title="Buka Dashboard Owner / Admin">
+          <span class="icon">⚙️</span>
+          <span class="btn-text">Dashboard Owner</span>
+        </button>
+        <button class="btn-cart" onclick="app.openCart()">
+          <span class="cart-icon">🛍️</span>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN PUBLIC CONTENT -->
+  <main id="publicView">
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-backdrop"></div>
+      <div class="hero-content">
+        <div class="hero-tag">AUTHENTIC ARTISANAL FRAGRANCE</div>
+        <h1 class="hero-title">Aroma Otentik.<br><span class="text-gold">Ketahanan Tanpa Kompromi.</span></h1>
+        <p class="hero-desc">
+          Lahir dari kekayaan alam Nusantara dan formulasi haute parfumerie modern. Konsentrasi <strong>Extrait De Parfum hingga 35%</strong> dengan proyeksi tahan 8–12 jam, dirancang khusus untuk iklim tropis Indonesia.
+        </p>
+        <div class="hero-cta-group">
+          <button class="btn-primary" onclick="app.openScentFinder()">
+            <span>✨ Ikuti Scent Finder</span>
+            <small>Temukan aroma sesuai kepribadianmu</small>
+          </button>
+          <button class="btn-secondary" onclick="app.scrollTo('koleksi')">
+            Jelajahi Koleksi
+          </button>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-val">35%</span>
+            <span class="stat-label">Concentration Oil</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-val">12+ Jam</span>
+            <span class="stat-label">Long-Lasting Sillage</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-val">100%</span>
+            <span class="stat-label">Cruelty-Free & IFRA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-card-featured">
+          <div class="card-badge">FLAGSHIP NOIR</div>
+          <img src="/images/noir.jpg" alt="YAWSCENT Noir" class="hero-perfume-img">
+          <div class="card-footer-info">
+            <div class="info-title">YAWSCENT Noir — Extrait</div>
+            <div class="info-notes">Java Vetiver • Amyris • Indonesian Oud</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Value Propositions -->
+    <section class="usp-section">
+      <div class="container usp-grid">
+        <div class="usp-card">
+          <div class="usp-icon">🌿</div>
+          <h3>Bahan Baku Berkualitas Tinggi</h3>
+          <p>Minyak esensial pilihan berstandar IFRA global berpadu dengan rempah eksotis Indonesia.</p>
+        </div>
+        <div class="usp-card">
+          <div class="usp-icon">⏳</div>
+          <h3>Ketahanan Nyata (8–12 Jam)</h3>
+          <p>Diformulasikan agar tidak cepat menguap pada suhu dan kelembapan iklim tropis.</p>
+        </div>
+        <div class="usp-card">
+          <div class="usp-icon">🎯</div>
+          <h3>Solusi Anti Blind-Buy</h3>
+          <p>Scent Finder pintar dan Discovery Set 5x5ml untuk memastikan aroma cocok sebelum beli ukuran besar.</p>
+        </div>
+        <div class="usp-card">
+          <div class="usp-icon">👑</div>
+          <h3>Loyalty VIP Eksklusif</h3>
+          <p>Kumpulkan poin belanja, nikmati promo member dan akses rilisan aroma terbatas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fragrance Collection Catalog -->
+    <section class="section catalog-section" id="koleksi">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">THE SIGNATURE REPERTOIRE</span>
+          <h2 class="section-title">Koleksi Aroma yawscent</h2>
+          <p class="section-desc">Pilihan mahakarya aroma yang diciptakan untuk meninggalkan impresi tak terlupakan.</p>
+        </div>
+
+        <div class="product-grid" id="productGrid">
+          <!-- Dynamically populated by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Notes Pyramid Highlight -->
+    <section class="section notes-pyramid-section">
+      <div class="container">
+        <div class="pyramid-container">
+          <div class="pyramid-info">
+            <span class="section-subtitle">ANATOMI OLFATORI</span>
+            <h2 class="section-title">Bagaimana Aroma yawscent Berevolusi?</h2>
+            <p>Parfum kami berevolusi indah di atas kulit sepanjang hari, berubah dari kesegaran awal hingga kehangatan yang intim.</p>
+            
+            <div class="pyramid-layer">
+              <div class="layer-header">
+                <span class="layer-step">01. TOP NOTES (Menit 0–15)</span>
+                <span class="layer-badge">First Impression</span>
+              </div>
+              <p class="layer-desc">Kesegaran pertama saat disemprotkan: Bergamot, Mandarin Orange, Pink Peppercorn.</p>
+            </div>
+
+            <div class="pyramid-layer">
+              <div class="layer-header">
+                <span class="layer-step">02. HEART / MIDDLE NOTES (Jam 1–4)</span>
+                <span class="layer-badge">The Signature Body</span>
+              </div>
+              <p class="layer-desc">Karakter inti aroma sesungguhnya: Java Vetiver Bloom, Jasmine Sambac, Iris Root.</p>
+            </div>
+
+            <div class="pyramid-layer">
+              <div class="layer-header">
+                <span class="layer-step">03. BASE NOTES (Jam 4–12+)</span>
+                <span class="layer-badge">Deep Memory Trail</span>
+              </div>
+              <p class="layer-desc">Aroma tahan lama yang menempel di serat baju & kulit: Indonesian Agarwood (Oud), Smokey Amber, Bourbon Vanilla.</p>
+            </div>
+          </div>
+
+          <div class="pyramid-visual">
+            <div class="fragrance-pyramid-graphic">
+              <div class="tier tier-top"><span>TOP NOTES</span></div>
+              <div class="tier tier-heart"><span>HEART NOTES</span></div>
+              <div class="tier tier-base"><span>BASE NOTES (DEEP SILLAGE)</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Discovery Set Section -->
+    <section class="section discovery-section" id="discovery">
+      <div class="container">
+        <div class="discovery-box">
+          <div class="discovery-visual">
+            <img src="/images/discovery.jpg" alt="yawscent discovery collection" class="discovery-img">
+          </div>
+          <div class="discovery-content">
+            <div class="card-badge">BEST ENTRY POINT</div>
+            <h2 class="discovery-title">Takut Salah Pilih? Mulai dari Discovery Set</h2>
+            <p class="discovery-desc">
+              Nikmati 5 varian mahakarya yawscent dalam botol travel-sprayer 5ml. Coba langsung di aktivitas harianmu selama 1 bulan penuh.
+            </p>
+            <ul class="discovery-perks">
+              <li>✨ Berisi 5 botol mini travel 5ml (Total 25ml konsentrasi Extrait & EDP)</li>
+              <li>🎁 <strong>Free Voucher Cashback Rp 50.000</strong> di dalam kotak untuk pembelian botol 50ml</li>
+              <li>📦 Kotak mewah rigid matte black dengan emboss emas, cocok untuk hadiah</li>
+            </ul>
+            <div class="discovery-pricing">
+              <div class="price-box">
+                <span class="old-price">Rp 179.000</span>
+                <span class="curr-price">Rp 149.000</span>
+              </div>
+              <button class="btn-primary" onclick="app.quickAdd('prod-discovery-003', 'var-disc-5x5')">
+                + Tambah ke Keranjang
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- TESTIMONIALS SECTION -->
+    <section class="section testimonials-section fade-in-section" id="testimoni">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">KATA MEREKA</span>
+          <h2 class="section-title">Pengalaman Pengguna YAWSCENT</h2>
+          <p class="section-desc">Lebih dari 10.000+ botol terjual dengan tingkat kepuasan aroma dan ketahanan 98.4%.</p>
+        </div>
+        <div class="testimonial-grid" id="testimonialGrid">
+          <!-- Populated dynamically via JS / API -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Omnichannel Mobile App Banner -->
+    <section class="section app-banner-section fade-in-section">
+      <div class="container app-banner-card">
+        <div class="app-banner-info">
+          <span class="app-tag">DOWNLOAD YAWSCENT MOBILE APP</span>
+          <h2>Dapatkan Hak Istimewa di Setiap Semprotan</h2>
+          <p>
+            Gabung bersama ribuan anggota VIP yawscent di iOS dan Android. Nikmati potongan harga khusus member, notifikasi pelacakan pesanan real-time, dan akses kuis Scent Finder eksklusif.
+          </p>
+          <div class="app-badges">
+            <button class="btn-store-badge">
+              <span class="icon">🍎</span>
+              <div>
+                <small>Download on</small>
+                <strong>App Store</strong>
+              </div>
+            </button>
+            <button class="btn-store-badge">
+              <span class="icon">🤖</span>
+              <div>
+                <small>GET IT ON</small>
+                <strong>Google Play</strong>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div class="app-banner-mockup">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <div class="phone-top-bar">YAWSCENT VIP CLUB</div>
+              <div class="phone-loyalty-card">
+                <div class="gold-tier">GOLD VIP MEMBER</div>
+                <div class="points-val">1.450 POIN</div>
+                <div class="card-no">YS-VIP-88921</div>
+              </div>
+              <div class="phone-app-btn">Klaim Voucher Rp 50.000</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brand Philosophy -->
+    <section class="section philosophy-section" id="tentang">
+      <div class="container text-center">
+        <span class="section-subtitle">OUR MANIFESTO</span>
+        <h2 class="section-title">Dedikasi Keanggunan Aroma Indonesia</h2>
+        <p class="philosophy-text">
+          "Kami percaya bahwa parfum bukan sekadar wewangian, melainkan tanda tangan tak terlihat yang mengukir memori. yawscent indonesia hadir memadukan kearifan aromatik Nusantara dengan sentuhan keanggunan modern kelas dunia."
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- VIP LOYALTY CLUB VIEW -->
+  <section id="loyaltyView" class="view-panel" style="display: none;">
+    <div class="container">
+      <button class="btn-back" onclick="app.showSection('home')">← Kembali ke Toko</button>
+      <div class="loyalty-header">
+        <span class="section-subtitle">YAWSCENT PRIVILEGE</span>
+        <h1 class="section-title">Klub Keanggotaan & Loyalty Poin</h1>
+        <p>Kumpulkan 1 poin setiap kelipatan transaksi Rp 1.000. Tukarkan poinmu dengan diskon langsung & produk eksklusif.</p>
+      </div>
+
+      <div class="loyalty-dashboard-grid" id="loyaltyContainer">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ADMIN DASHBOARD VIEW -->
+  <section id="adminView" class="view-panel" style="display: none;">
+    <div class="container admin-container">
+      <div class="admin-topbar">
+        <div>
+          <span class="badge-admin">MODE ADMIN AKTIF</span>
+          <h1 class="admin-title">Dashboard Manajemen Omnichannel</h1>
+          <p class="admin-subtitle">Kontrol inventaris toko fisik, web, status order, dan performa penjualan.</p>
+        </div>
+        <button class="btn-close-admin" onclick="app.toggleAdminView()">Keluar dari Admin</button>
+      </div>
+
+      <div class="metrics-grid" id="adminMetrics">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="admin-main-grid">
+        <!-- Inventory Management -->
+        <div class="admin-card">
+          <div class="card-header-flex">
+            <h3>📦 Stok Multi-Channel (Online & Toko Fisik)</h3>
+            <span class="sync-badge">🟢 Real-Time Synced</span>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table" id="inventoryTable">
+              <thead>
+                <tr>
+                  <th>Produk & Varian</th>
+                  <th>SKU</th>
+                  <th>Stok Web/App</th>
+                  <th>Stok Toko Fisik</th>
+                  <th>Total</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Rendered by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Orders & Fulfillment -->
+        <div class="admin-card">
+          <div class="card-header-flex">
+            <h3>📑 Pesanan Masuk & Pengiriman Kurir</h3>
+            <span class="orders-count" id="adminOrderCount">0 Pesanan</span>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table" id="ordersTable">
+              <thead>
+                <tr>
+                  <th>No. Order</th>
+                  <th>Pelanggan</th>
+                  <th>Channel</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                  <th>Kurir / Resi</th>
+                  <th>Update Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Rendered by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUTH / LOGIN MODAL -->
+  <div class="modal-overlay" id="authModal" style="display: none;">
+    <div class="modal-box auth-modal-box">
+      <button class="modal-close" onclick="app.closeLoginModal()">✕</button>
+      <div class="auth-header">
+        <span class="auth-pill-badge">HAUTE PARFUMERIE ACCESS</span>
+        <h2 class="auth-title">Masuk Akun Yawscent</h2>
+        <p class="auth-sub">Pilih peran akun Anda untuk mengelola toko atau mengakses hak istimewa Member VIP.</p>
+        <div style="margin-top: 8px;">
+          <a href="/login" class="classic-switch-text" style="color: var(--gold-light); font-size: 11px; text-decoration: underline; letter-spacing: 0.5px;">
+            ⚜️ Buka Halaman Khusus Login Klasik (Salon Privé) →
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Role Switcher Tabs -->
+      <div class="role-selector-wrap">
+        <div class="role-option-card active" id="roleCardOwner" onclick="app.selectRoleTab('OWNER')">
+          <div class="role-icon">🛡️</div>
+          <div class="role-text">
+            <strong>Owner / Founder</strong>
+            <small>Akses Dashboard, Stok & Layanan</small>
+          </div>
+        </div>
+        <div class="role-option-card" id="roleCardCustomer" onclick="app.selectRoleTab('CUSTOMER')">
+          <div class="role-icon">👑</div>
+          <div class="role-text">
+            <strong>Member VIP / Pelanggan</strong>
+            <small>Belanja, Dompet Poin & Diskon</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" onsubmit="app.handleLoginSubmit(event)">
+        <div class="form-group">
+          <label class="form-label" for="loginEmail">Alamat Email</label>
+          <input type="email" id="loginEmail" class="form-input" required placeholder="nama@yawscent.id" value="owner@yawscent.id">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="loginPassword">Kata Sandi</label>
+          <input type="password" id="loginPassword" class="form-input" required placeholder="••••••••" value="owner123">
+        </div>
+
+        <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">
+          <span>Masuk Sebagai <span id="loginRoleLabel">Owner / Founder</span></span>
+        </button>
+      </form>
+
+      <!-- Quick 1-Click Demo Login -->
+      <div class="quick-demo-login">
+        <span>⚡ Coba Login Instan (1-Klik):</span>
+        <div class="quick-demo-btns">
+          <button type="button" class="btn-quick-role" onclick="app.quickLoginAs('OWNER')">
+            🛡️ Login Owner
+          </button>
+          <button type="button" class="btn-quick-role" onclick="app.quickLoginAs('CUSTOMER')">
+            👑 Login Member VIP (Dimas)
+          </button>
+        </div>
+      </div>
+
+      <!-- Logged in state info & Logout button -->
+      <div id="loggedInSection" style="display: none; text-align: center; border-top: 1px solid var(--border-subtle); padding-top: 16px; margin-top: 16px;">
+        <p style="color: var(--gold-light); font-size: 13px; margin-bottom: 12px;" id="currentLoggedInText"></p>
+        <button type="button" class="btn-secondary" style="width: 100%; color: #FF6B6B; border-color: rgba(255,107,107,0.3);" onclick="app.handleLogout()">
+          🚪 Keluar / Logout Akun
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCENT FINDER MODAL -->
+  <div class="modal-overlay" id="scentFinderModal" style="display: none;">
+    <div class="modal-box scent-finder-box">
+      <button class="modal-close" onclick="app.closeScentFinder()">✕</button>
+      <div id="quizContent">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- CART & CHECKOUT MODAL -->
+  <div class="modal-overlay" id="cartModal" style="display: none;">
+    <div class="modal-box cart-modal-box">
+      <button class="modal-close" onclick="app.closeCart()">✕</button>
+      <div class="cart-layout" id="cartLayout">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast-notification" id="toast"></div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <div class="logo-text">YAWSCENT</div>
+        <p>Haute Parfumerie Indonesia. Formulasi otentik, memikat, dan tahan lama.</p>
+        <p class="copy">© 2026 yawscent indonesia. Hak Cipta Dilindungi Undang-Undang.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Layanan</h4>
+        <a href="#koleksi">Katalog Produk</a>
+        <a href="#scent-finder" onclick="app.openScentFinder()">Scent Finder Quiz</a>
+        <a href="#discovery">Discovery Set 5x5ml</a>
+        <a href="#loyalty" onclick="app.showSection('loyalty')">Member Loyalty VIP</a>
+      </div>
+      <div class="footer-col">
+        <h4>Dukungan & Garansi</h4>
+        <a href="#">Garansi Kepuasan Aroma</a>
+        <a href="#">Cek Resi & Ongkir</a>
+        <a href="#">Syarat & Ketentuan</a>
+        <a href="#">Kontak Concierge WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating CTA -->
+  <a href="https://wa.me/6281234567890?text=Halo%20YAWSCENT%2C%20saya%20ingin%20konsultasi%20parfum" target="_blank" rel="noopener noreferrer" class="whatsapp-float" title="Konsultasi Parfum via WhatsApp">
+    <span class="wa-icon">💬</span>
+    <span>Chat WhatsApp</span>
+  </a>
+
+  <script src="app.js"></script>
+</body>
+</html>

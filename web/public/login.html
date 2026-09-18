@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruang Akses Klasik — YAWSCENT INDONESIA</title>
+  <meta name="description" content="Masuk ke Ruang Reservasi Klasik YAWSCENT Indonesia. Akses Dashboard Owner dan Buku Tamu Member VIP.">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/images/noir.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --font-serif: 'Cinzel', serif;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+      --bg-deep: #07080A;
+      --bg-card: #0F1117;
+      --bg-surface: #141722;
+      --gold-primary: #D4AF37;
+      --gold-light: #F3E5AB;
+      --gold-dark: #997A15;
+      --border-gold: rgba(212, 175, 55, 0.45);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --text-pure: #FFFFFF;
+      --text-main: #E2E4E9;
+      --text-muted: #9BA1B0;
+      --text-dim: #646A7A;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-deep);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.12) 0%, transparent 60%),
+        radial-gradient(circle at 10% 80%, rgba(153, 122, 21, 0.06) 0%, transparent 50%);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Top Navigation Bar */
+    .classic-header {
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      background: rgba(7, 8, 10, 0.85);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .btn-return-shop {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--gold-light);
+      text-decoration: none;
+      font-family: var(--font-serif);
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 4px;
+      transition: all 0.25s ease;
+    }
+    .btn-return-shop:hover {
+      background: rgba(212, 175, 55, 0.12);
+      border-color: var(--gold-primary);
+      transform: translateX(-3px);
+    }
+
+    .brand-center {
+      text-align: center;
+    }
+    .brand-logo-text {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 4px;
+      color: #FFF;
+      display: block;
+    }
+    .brand-logo-sub {
+      font-family: var(--font-serif);
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: var(--gold-primary);
+      text-transform: uppercase;
+      display: block;
+    }
+
+    .header-badge {
+      font-family: var(--font-serif);
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      color: var(--gold-primary);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: rgba(212, 175, 55, 0.08);
+    }
+
+    /* Main Content Container */
+    .main-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px 60px;
+    }
+
+    .classic-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      max-width: 1040px;
+      width: 100%;
+      background: var(--bg-card);
+      border: 2px solid var(--gold-primary);
+      outline: 1px solid rgba(212, 175, 55, 0.35);
+      outline-offset: -8px;
+      border-radius: 12px;
+      box-shadow: 
+        0 25px 70px rgba(0, 0, 0, 0.8),
+        0 0 45px rgba(212, 175, 55, 0.12);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Ornamental Corner Flourishes */
+    .flourish {
+      position: absolute;
+      color: var(--gold-primary);
+      font-size: 22px;
+      line-height: 1;
+      opacity: 0.85;
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+      pointer-events: none;
+      z-index: 10;
+    }
+    .flourish.top-left { top: 18px; left: 18px; }
+    .flourish.top-right { top: 18px; right: 18px; }
+    .flourish.bottom-left { bottom: 18px; left: 18px; }
+    .flourish.bottom-right { bottom: 18px; right: 18px; }
+
+    /* Left Heritage Panel */
+    .heritage-panel {
+      background: 
+        linear-gradient(180deg, rgba(15, 17, 23, 0.85) 0%, rgba(7, 8, 10, 0.95) 100%),
+        url('/images/noir.jpg') center/cover no-repeat;
+      padding: 48px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid rgba(212, 175, 55, 0.25);
+      position: relative;
+    }
+
+    .seal-wrap {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .monogram-seal {
+      width: 76px;
+      height: 76px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #3D3118 0%, #1A1710 70%, #0C0B08 100%);
+      border: 2px solid var(--gold-primary);
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.35), inset 0 0 15px rgba(212, 175, 55, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .monogram-seal::after {
+      content: '';
+      position: absolute;
+      inset: 4px;
+      border-radius: 50%;
+      border: 1px dashed rgba(212, 175, 55, 0.5);
+    }
+    .monogram-text {
+      font-family: var(--font-serif);
+      font-weight: 800;
+      font-size: 26px;
+      letter-spacing: 2px;
+      color: var(--gold-light);
+    }
+
+    .heritage-subtitle {
+      font-family: var(--font-serif);
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--gold-primary);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .heritage-title {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      letter-spacing: 3px;
+      color: #FFF;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+    .heritage-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .heritage-features {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: rgba(15, 17, 23, 0.7);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      padding: 12px 14px;
+      border-radius: 6px;
+    }
+    .feature-item .f-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .feature-item strong {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 12px;
+      color: var(--gold-light);
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+    .feature-item p {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Right Portal Panel */
+    .portal-panel {
+      padding: 48px 42px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: radial-gradient(ellipse at 50% 0%, #1A1713 0%, #0F1117 70%);
+    }
+
+    .portal-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .portal-tag {
+      display: inline-block;
+      font-family: var(--font-serif);
+      font-size: 10px;
+      letter-spacing: 2px;
+      font-weight: 700;
+      color: var(--gold-primary);
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid var(--border-gold);
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+    }
+    .portal-title {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      letter-spacing: 2px;
+      color: #FFF;
+      margin-bottom: 6px;
+    }
+    .portal-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Role Plaque Selector */
+    .role-plaques {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .role-plaque {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      background: rgba(20, 23, 34, 0.8);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+    .role-plaque:hover {
+      border-color: var(--gold-primary);
+      background: rgba(212, 175, 55, 0.08);
+      transform: translateY(-2px);
+    }
+    .role-plaque.active {
+      border: 2px solid var(--gold-primary);
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.18), rgba(28, 22, 12, 0.9));
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+    }
+    .role-plaque .r-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    .role-plaque .r-info strong {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 13px;
+      color: #FFF;
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+    .role-plaque .r-info small {
+      display: block;
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.2;
+    }
+    .role-plaque .r-active-stamp {
+      display: none;
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      font-family: var(--font-serif);
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #000;
+      background: var(--gold-primary);
+      padding: 2px 5px;
+      border-radius: 2px;
+    }
+    .role-plaque.active .r-active-stamp {
+      display: block;
+    }
+
+    /* Form Elements */
+    .classic-field {
+      margin-bottom: 18px;
+    }
+    .classic-label {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: var(--gold-light);
+      font-weight: 600;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .classic-label-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .classic-input-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .classic-input {
+      width: 100%;
+      background: #080A0E;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      color: #FFF;
+      padding: 13px 16px;
+      font-size: 14px;
+      border-radius: 4px;
+      outline: none;
+      transition: all 0.25s ease;
+      font-family: var(--font-sans);
+    }
+    .classic-input:focus {
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 16px rgba(212, 175, 55, 0.35);
+      background: #0E1017;
+    }
+    .toggle-pass-btn {
+      position: absolute;
+      right: 12px;
+      background: transparent;
+      border: none;
+      color: var(--gold-light);
+      font-size: 16px;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .toggle-pass-btn:hover {
+      opacity: 1;
+    }
+
+    .form-options-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 14px 0 22px;
+      font-size: 12px;
+    }
+    .remember-check {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    .remember-check input {
+      accent-color: var(--gold-primary);
+    }
+    .link-help {
+      color: var(--gold-primary);
+      text-decoration: none;
+      font-size: 11px;
+      transition: color 0.2s;
+    }
+    .link-help:hover {
+      text-decoration: underline;
+      color: var(--gold-light);
+    }
+
+    /* Main Submit Button */
+    .btn-portal-submit {
+      width: 100%;
+      padding: 16px 24px;
+      background: linear-gradient(135deg, #F0E6D2 0%, #D4AF37 50%, #AA820A 100%);
+      border: 1px solid #FFF;
+      color: #07080A;
+      font-family: var(--font-serif);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-portal-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(212, 175, 55, 0.6);
+    }
+
+    /* Quick 1-Click Demo Buttons */
+    .demo-fast-login {
+      margin-top: 26px;
+      padding-top: 18px;
+      border-top: 1px dashed rgba(212, 175, 55, 0.3);
+      text-align: center;
+    }
+    .demo-fast-title {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+    .demo-buttons-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .btn-fast-demo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      background: rgba(15, 17, 23, 0.9);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s;
+    }
+    .btn-fast-demo:hover {
+      border-color: var(--gold-primary);
+      background: rgba(212, 175, 55, 0.12);
+      transform: translateY(-2px);
+    }
+    .btn-fast-demo .f-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .btn-fast-demo strong {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 11px;
+      color: #FFF;
+      letter-spacing: 0.5px;
+    }
+    .btn-fast-demo small {
+      display: block;
+      font-size: 10px;
+      color: var(--text-dim);
+    }
+
+    /* Active Session Card */
+    .active-session-box {
+      margin-top: 24px;
+      padding: 14px 16px;
+      background: linear-gradient(135deg, rgba(30, 24, 14, 0.9), rgba(16, 18, 24, 0.95));
+      border: 1px solid var(--gold-primary);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .session-meta small {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 9px;
+      letter-spacing: 1px;
+      color: var(--gold-primary);
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .session-meta strong {
+      font-family: var(--font-serif);
+      font-size: 13px;
+      color: #FFF;
+    }
+    .btn-session-exit {
+      background: transparent;
+      border: 1px solid rgba(255, 107, 107, 0.4);
+      color: #FF6B6B;
+      padding: 6px 12px;
+      font-size: 11px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: var(--font-serif);
+      letter-spacing: 0.5px;
+      transition: all 0.2s;
+    }
+    .btn-session-exit:hover {
+      background: rgba(255, 107, 107, 0.15);
+      border-color: #FF6B6B;
+    }
+
+    /* Toast Notification */
+    .toast-box {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #12141A;
+      border: 1px solid var(--gold-primary);
+      color: #FFF;
+      padding: 14px 22px;
+      border-radius: 6px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      display: none;
+      z-index: 1000;
+      font-size: 13px;
+      animation: slideUp 0.3s ease;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @media (max-width: 860px) {
+      .classic-grid {
+        grid-template-columns: 1fr;
+      }
+      .heritage-panel {
+        display: none;
+      }
+      .flourish {
+        display: none;
+      }
+      .portal-panel {
+        padding: 36px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="classic-header">
+    <a href="/" class="btn-return-shop">
+      <span>← Kembali ke Butik</span>
+    </a>
+
+    <div class="brand-center">
+      <span class="brand-logo-text">YAWSCENT</span>
+      <span class="brand-logo-sub">INDONESIA</span>
+    </div>
+
+    <div class="header-badge">
+      <span>SALON PRIVÉ D'ACCÈS</span>
+    </div>
+  </header>
+
+  <!-- Main Classic Content -->
+  <main class="main-wrapper">
+    <div class="classic-grid">
+      <!-- 4 Corner Flourishes -->
+      <div class="flourish top-left">⚜</div>
+      <div class="flourish top-right">⚜</div>
+      <div class="flourish bottom-left">⚜</div>
+      <div class="flourish bottom-right">⚜</div>
+
+      <!-- Left Heritage & Atmosphere Panel -->
+      <aside class="heritage-panel">
+        <div class="seal-wrap">
+          <div class="monogram-seal">
+            <span class="monogram-text">YS</span>
+          </div>
+          <div class="heritage-subtitle">MAISON DE HAUTE PARFUMERIE</div>
+          <h2 class="heritage-title">YAWSCENT INDONESIA</h2>
+          <p class="heritage-quote">"Aroma Otentik. Warisan Abadi Nusantara dipadukan dengan formulasi modern kelas dunia."</p>
+        </div>
+
+        <div class="heritage-features">
+          <div class="feature-item">
+            <div class="f-icon">⚜️</div>
+            <div>
+              <strong>Akses Pemilik (Owner & Founder)</strong>
+              <p>Kendali penuh stok omnichannel toko fisik & web, pembaruan resi kurir, dan pemantauan omset penjualan.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="f-icon">👑</div>
+            <div>
+              <strong>Buku Tamu VIP (Member Kehormatan)</strong>
+              <p>Akses belanja katalog resmi, saldo 1.808 poin emas, penukaran voucher potongan belanja, dan rilisan terbatas.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="font-family: var(--font-serif); font-size: 10px; color: var(--gold-light); letter-spacing: 1px; text-align: center; margin-top: 20px;">
+          ✦ FONDÉE EN 2024 • SURABAYA & JAKARTA ✦
+        </div>
+      </aside>
+
+      <!-- Right Classic Form Portal -->
+      <section class="portal-panel">
+        <div class="portal-header">
+          <span class="portal-tag">PORTAL AUTENTIKASI RESMI</span>
+          <h1 class="portal-title">Masuk ke Ruang Akses</h1>
+          <p class="portal-desc">Pilih peran akun Anda untuk mengelola toko atau mengakses hak istimewa Member VIP.</p>
+        </div>
+
+        <!-- Role Plaques Selector -->
+        <div class="role-plaques">
+          <div class="role-plaque active" id="plaqueOwner" onclick="switchRole('OWNER')">
+            <span class="r-active-stamp">TERPILIH</span>
+            <div class="r-icon">⚜️</div>
+            <div class="r-info">
+              <strong>Owner / Founder</strong>
+              <small>Dashboard & Manajemen</small>
+            </div>
+          </div>
+
+          <div class="role-plaque" id="plaqueCustomer" onclick="switchRole('CUSTOMER')">
+            <span class="r-active-stamp">TERPILIH</span>
+            <div class="r-icon">👑</div>
+            <div class="r-info">
+              <strong>Member VIP</strong>
+              <small>Buku Tamu & Poin Emas</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <form id="portalLoginForm" onsubmit="handleLogin(event)">
+          <div class="classic-field">
+            <label class="classic-label" for="loginEmail">
+              ✉ Alamat Pos-El / Surel Terdaftar
+            </label>
+            <div class="classic-input-box">
+              <input type="email" id="loginEmail" class="classic-input" required placeholder="owner@yawscent.id" value="owner@yawscent.id">
+            </div>
+          </div>
+
+          <div class="classic-field">
+            <div class="classic-label-flex">
+              <label class="classic-label" for="loginPassword">
+                🗝 Kata Sandi Rahasia
+              </label>
+              <a href="https://wa.me/6281234567890?text=Halo%20YAWSCENT%2C%20saya%20butuh%20bantuan%20reset%20kata%20sandi" target="_blank" class="link-help">Bantuan Sandi?</a>
+            </div>
+            <div class="classic-input-box">
+              <input type="password" id="loginPassword" class="classic-input" required placeholder="••••••••" value="owner123">
+              <button type="button" class="toggle-pass-btn" onclick="togglePass()" title="Tampilkan / Sembunyikan Sandi">👁</button>
+            </div>
+          </div>
+
+          <div class="form-options-row">
+            <label class="remember-check">
+              <input type="checkbox" id="rememberMe" checked>
+              <span>Ingat kredensial di peramban ini</span>
+            </label>
+            <span style="font-size: 11px; color: #5CD278;">🔒 Enkripsi Sesi Aktif</span>
+          </div>
+
+          <button type="submit" class="btn-portal-submit" id="btnSubmit">
+            <span>⚜️ MASUK SEBAGAI OWNER / FOUNDER</span>
+          </button>
+        </form>
+
+        <!-- Fast 1-Click Demo Login -->
+        <div class="demo-fast-login">
+          <span class="demo-fast-title">⚡ Akses Cepat Sekali Klik (Demo)</span>
+          <div class="demo-buttons-grid">
+            <button type="button" class="btn-fast-demo" onclick="quickLogin('OWNER')">
+              <span class="f-icon">⚜️</span>
+              <div>
+                <strong>Masuk Owner</strong>
+                <small>owner@yawscent.id</small>
+              </div>
+            </button>
+            <button type="button" class="btn-fast-demo" onclick="quickLogin('CUSTOMER')">
+              <span class="f-icon">👑</span>
+              <div>
+                <strong>Masuk Member VIP</strong>
+                <small>dimas.arya@example.com</small>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Active Session Banner (if already logged in) -->
+        <div id="activeSessionCard" class="active-session-box" style="display: none;">
+          <div class="session-meta">
+            <small id="activeSessionLabel">SESI AKTIF SAAT INI</small>
+            <strong id="activeSessionName">Owner & Founder Yawscent</strong>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button type="button" class="btn-portal-submit" style="padding: 6px 12px; font-size: 11px;" onclick="goToApp()">Buka Toko →</button>
+            <button type="button" class="btn-session-exit" onclick="logoutSession()">Keluar</button>
+          </div>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <div id="toast" class="toast-box"></div>
+
+  <script>
+    let currentRole = "OWNER";
+
+    function showToast(msg) {
+      const t = document.getElementById("toast");
+      if (!t) return;
+      t.innerText = msg;
+      t.style.display = "block";
+      setTimeout(() => { t.style.display = "none"; }, 3500);
+    }
+
+    function togglePass() {
+      const p = document.getElementById("loginPassword");
+      if (p) p.type = p.type === "password" ? "text" : "password";
+    }
+
+    function switchRole(role) {
+      currentRole = role;
+      const plaqueOwner = document.getElementById("plaqueOwner");
+      const plaqueCustomer = document.getElementById("plaqueCustomer");
+      const emailInput = document.getElementById("loginEmail");
+      const passInput = document.getElementById("loginPassword");
+      const btnSubmit = document.getElementById("btnSubmit");
+
+      if (role === "OWNER") {
+        plaqueOwner.classList.add("active");
+        plaqueCustomer.classList.remove("active");
+        emailInput.value = "owner@yawscent.id";
+        passInput.value = "owner123";
+        btnSubmit.innerHTML = "<span>⚜️ MASUK SEBAGAI OWNER / FOUNDER</span>";
+      } else {
+        plaqueCustomer.classList.add("active");
+        plaqueOwner.classList.remove("active");
+        emailInput.value = "dimas.arya@example.com";
+        passInput.value = "member123";
+        btnSubmit.innerHTML = "<span>👑 MASUK SEBAGAI MEMBER VIP</span>";
+      }
+    }
+
+    async function handleLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById("loginEmail").value.trim();
+      const password = document.getElementById("loginPassword").value.trim();
+
+      try {
+        const res = await fetch("/api/v1/auth/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password })
+        });
+
+        const json = await res.json();
+        if (res.ok && json.data) {
+          saveUserAndRedirect(json.data);
+        } else {
+          alert(json.message || "Gagal masuk. Periksa email dan password.");
+        }
+      } catch (err) {
+        // Fallback for offline mode
+        if (email === "owner@yawscent.id" && password === "owner123") {
+          saveUserAndRedirect({
+            id: "user-owner-001",
+            email: "owner@yawscent.id",
+            fullName: "Owner & Founder Yawscent",
+            role: "OWNER"
+          });
+        } else if (email === "dimas.arya@example.com" && password === "member123") {
+          saveUserAndRedirect({
+            id: "user-001",
+            email: "dimas.arya@example.com",
+            fullName: "Dimas Arya Pratama",
+            role: "CUSTOMER"
+          });
+        } else {
+          alert("Gagal masuk. Periksa kembali email dan kata sandi Anda.");
+        }
+      }
+    }
+
+    function quickLogin(role) {
+      switchRole(role);
+      if (role === "OWNER") {
+        saveUserAndRedirect({
+          id: "user-owner-001",
+          email: "owner@yawscent.id",
+          fullName: "Owner & Founder Yawscent",
+          role: "OWNER"
+        });
+      } else {
+        saveUserAndRedirect({
+          id: "user-001",
+          email: "dimas.arya@example.com",
+          fullName: "Dimas Arya Pratama",
+          role: "CUSTOMER"
+        });
+      }
+    }
+
+    function saveUserAndRedirect(user) {
+      localStorage.setItem("yawscent_auth_user", JSON.stringify(user));
+      showToast(`⚜️ Selamat datang di Salon Privé, ${user.fullName}!`);
+      setTimeout(() => {
+        if (user.role === "OWNER") {
+          window.location.href = "/#admin";
+        } else {
+          window.location.href = "/#loyalty";
+        }
+      }, 700);
+    }
+
+    function checkActiveSession() {
+      const raw = localStorage.getItem("yawscent_auth_user");
+      if (raw) {
+        try {
+          const user = JSON.parse(raw);
+          const card = document.getElementById("activeSessionCard");
+          const name = document.getElementById("activeSessionName");
+          const label = document.getElementById("activeSessionLabel");
+          if (card && name && label) {
+            name.innerText = user.fullName + ` (${user.role === 'OWNER' ? '🛡️ Owner' : '👑 Member VIP'})`;
+            card.style.display = "flex";
+          }
+        } catch (e) {}
+      }
+    }
+
+    function goToApp() {
+      const raw = localStorage.getItem("yawscent_auth_user");
+      if (raw) {
+        const u = JSON.parse(raw);
+        window.location.href = u.role === "OWNER" ? "/#admin" : "/#loyalty";
+      } else {
+        window.location.href = "/";
+      }
+    }
+
+    function logoutSession() {
+      localStorage.removeItem("yawscent_auth_user");
+      document.getElementById("activeSessionCard").style.display = "none";
+      showToast("Sesi berhasil dikeluarkan.");
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      checkActiveSession();
+    });
+  </script>
+</body>
+</html>

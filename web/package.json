@@ -1,0 +1,13 @@
+{
+  "name": "yawscent-web",
+  "version": "1.0.0",
+  "description": "Storefront, Scent Finder, VIP Loyalty & Omnichannel Admin for yawscent indonesia",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["perfume", "web", "storefront", "yawscent"],
+  "author": "yawscent indonesia",
+  "license": "MIT"
+}

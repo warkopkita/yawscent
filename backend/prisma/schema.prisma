@@ -1,0 +1,177 @@
+// Prisma Schema for yawscent indonesia (PostgreSQL)
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  CUSTOMER
+  STORE_STAFF
+  ADMIN
+}
+
+enum OrderStatus {
+  PENDING_PAYMENT
+  PAID
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+enum ChannelSource {
+  ONLINE_WEB
+  MOBILE_APP
+  OFFLINE_STORE_POS
+  MARKETPLACE
+}
+
+enum MembershipTier {
+  BRONZE
+  SILVER
+  GOLD_VIP
+}
+
+model User {
+  id            String          @id @default(uuid())
+  email         String          @unique
+  fullName      String
+  phoneNumber   String?
+  role          Role            @default(CUSTOMER)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  loyaltyWallet LoyaltyWallet?
+  orders        Order[]
+  quizResults   QuizResult[]
+}
+
+model LoyaltyWallet {
+  id            String         @id @default(uuid())
+  userId        String         @unique
+  user          User           @relation(fields: [userId], references: [id])
+  points        Int            @default(0)
+  tier          MembershipTier @default(BRONZE)
+  totalSpent    Decimal        @default(0.00)
+  updatedAt     DateTime       @updatedAt
+  history       PointHistory[]
+}
+
+model PointHistory {
+  id            String        @id @default(uuid())
+  walletId      String
+  wallet        LoyaltyWallet @relation(fields: [walletId], references: [id])
+  amount        Int
+  type          String        // EARNED, REDEEMED, BONUS
+  description   String
+  createdAt     DateTime      @default(now())
+}
+
+model Product {
+  id              String           @id @default(uuid())
+  slug            String           @unique
+  name            String
+  tagline         String
+  description     String
+  gender          String           // UNISEX, MEN, WOMEN
+  concentration   String           // Extrait De Parfum, Eau De Parfum
+  longevityHours  Int              // e.g. 8-12 hours
+  sillageRating   String           // Intimate, Moderate, Strong, Enormous
+  character       String           // Woody & Smoky, Fresh Floral, Sweet Gourmand
+  rating          Decimal          @default(4.9)
+  reviewCount     Int              @default(120)
+  imageUrl        String
+  variants        ProductVariant[]
+  notes           ProductNote[]
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+}
+
+model ProductVariant {
+  id            String      @id @default(uuid())
+  productId     String
+  product       Product     @relation(fields: [productId], references: [id])
+  sizeMl        Int         // 30, 50, 100, 5 (discovery)
+  sku           String      @unique
+  price         Decimal
+  discountPrice Decimal?
+  stockOnline   Int         @default(0)
+  stockStore    Int         @default(0)
+  orderItems    OrderItem[]
+}
+
+model ProductNote {
+  id        String   @id @default(uuid())
+  productId String
+  product   Product  @relation(fields: [productId], references: [id])
+  layer     String   // TOP, HEART, BASE
+  name      String   // e.g. "Calabrian Bergamot", "Indonesian Agarwood"
+}
+
+model Order {
+  id              String        @id @default(uuid())
+  orderNumber     String        @unique
+  userId          String?
+  user            User?         @relation(fields: [userId], references: [id])
+  channel         ChannelSource @default(ONLINE_WEB)
+  status          OrderStatus   @default(PENDING_PAYMENT)
+  subtotal        Decimal
+  shippingCost    Decimal       @default(0.00)
+  discountAmount  Decimal       @default(0.00)
+  totalAmount     Decimal
+  pointsEarned    Int           @default(0)
+  
+  // Shipping details
+  recipientName   String
+  phoneNumber     String
+  address         String
+  city            String
+  courierCode     String        // jnt, sicepat, anteraja
+  courierService  String        // REG, BEST, SAMEDAY
+  airwayBill      String?       // No. Resi
+
+  // Payment details
+  paymentMethod   String        // QRIS, BCA_VA, GOPAY
+  paymentTxId     String?       // Midtrans Transaction ID
+  paidAt          DateTime?
+
+  items           OrderItem[]
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+}
+
+model OrderItem {
+  id         String         @id @default(uuid())
+  orderId    String
+  order      Order          @relation(fields: [orderId], references: [id])
+  variantId  String
+  variant    ProductVariant @relation(fields: [variantId], references: [id])
+  quantity   Int
+  unitPrice  Decimal
+  totalPrice Decimal
+}
+
+model Voucher {
+  id            String    @id @default(uuid())
+  code          String    @unique
+  discountType  String    // PERCENTAGE, FIXED
+  discountValue Decimal
+  minSpend      Decimal   @default(0)
+  maxDiscount   Decimal?
+  expiryDate    DateTime
+  isActive      Boolean   @default(true)
+}
+
+model QuizResult {
+  id              String   @id @default(uuid())
+  userId          String?
+  user            User?    @relation(fields: [userId], references: [id])
+  preferredVibe   String
+  occasion        String
+  intensity       String
+  recommendedSlug String
+  createdAt       DateTime @default(now())
+}

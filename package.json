@@ -1,0 +1,16 @@
+{
+  "name": "yawscent-indonesia",
+  "version": "2.0.0",
+  "description": "Haute Parfumerie Storefront, Scent Finder, VIP Loyalty & Omnichannel Admin for yawscent indonesia",
+  "main": "web/server.js",
+  "scripts": {
+    "start": "node web/server.js",
+    "dev": "node web/server.js"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "keywords": ["perfume", "yawscent", "haute-parfumerie", "ecommerce"],
+  "author": "yawscent indonesia",
+  "license": "MIT"
+}
