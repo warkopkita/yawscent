@@ -472,11 +472,15 @@ function readJsonBody(req, callback) {
   });
 }
 
-server.listen(PORT, () => {
-  console.log(`=======================================================`);
-  console.log(`✨ YAWSCENT INDONESIA UNIFIED SERVER (REAL SQL PERSISTENCE) ✨`);
-  console.log(`   Web Store & Admin : http://localhost:${PORT}`);
-  console.log(`   API Health        : http://localhost:${PORT}/api/v1/health`);
-  console.log(`   Database Status   : Connected to SQLite (yawscent.db)`);
-  console.log(`=======================================================`);
-});
+if (require.main === module) {
+  server.listen(PORT, () => {
+    console.log(`=======================================================`);
+    console.log(`✨ YAWSCENT INDONESIA UNIFIED SERVER (REAL SQL PERSISTENCE) ✨`);
+    console.log(`   Web Store & Admin : http://localhost:${PORT}`);
+    console.log(`   API Health        : http://localhost:${PORT}/api/v1/health`);
+    console.log(`   Database Status   : Connected to SQLite (yawscent.db)`);
+    console.log(`=======================================================`);
+  });
+}
+
+module.exports = server;
